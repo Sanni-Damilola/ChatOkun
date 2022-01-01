@@ -15,8 +15,8 @@ const App = () => {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <QueryClientProvider client={client}>
-              {" "}
-              <RouterProvider router={mainRouter} />
+            {" "}
+            <RouterProvider router={mainRouter} />
           </QueryClientProvider>
         </PersistGate>
       </Provider>
