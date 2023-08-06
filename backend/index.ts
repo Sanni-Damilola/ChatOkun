@@ -8,7 +8,7 @@ import chatMessage from "./router/chatMessageRouter";
 import { Server } from "socket.io";
 import http from "http";
 
-const url = "mongodb://127.0.0.1:27017/simpleDB";
+const url = "mongodb://127.0.0.1:27017/chatDB";
 const app: Application = express();
 const port: number = 8899;
 
