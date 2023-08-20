@@ -37,6 +37,19 @@ const Wrapper = styled.div`
   height: fit-content;
 `;
 
+// Snackbar styled component
+const Snackbar = styled.div<{ show: any }>`
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  display: ${(props) => (props.show ? "block" : "none")};
+`;
+
 interface Friend {
   username: string;
   email: string;
@@ -55,15 +68,19 @@ const generateFriends = (count: number): Friend[] => {
   return friends;
 };
 
-const AddFriend = () => {
+const AddFriend: React.FC = () => {
   // You can adjust the number of friends here
   const numberOfFriends = 100;
-  const [friends, setFriends] = useState<Friend[]>(
-    generateFriends(numberOfFriends)
-  );
+  const [friends] = useState<Friend[]>(generateFriends(numberOfFriends));
+
+  const [snackbarMessage, setSnackbarMessage] = useState<string>("");
 
   const handleAddFriend = (friendUsername: string) => {
-    alert(`Adding ${friendUsername} as a friend!`);
+    const message = `Adding ${friendUsername} as a friend!`;
+    setSnackbarMessage(message);
+    setTimeout(() => {
+      setSnackbarMessage("");
+    }, 5000);
   };
 
   return (
@@ -79,6 +96,7 @@ const AddFriend = () => {
           <AddButton>Add Friend</AddButton>
         </CardContainer>
       ))}
+      <Snackbar show={snackbarMessage !== ""}>{snackbarMessage}</Snackbar>
     </Wrapper>
   );
 };

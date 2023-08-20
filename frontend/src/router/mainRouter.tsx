@@ -6,9 +6,10 @@ import PrivateRoute from "./privateRoute";
 import Layout from "../components/common/Layout";
 import AllUsers from "../pages/dashPages/AllUsers";
 import AddFriends from "../pages/dashPages/AddFriends";
-import UnFriends from "../pages/dashPages/UnFriends";
 import ViewRequest from "../pages/dashPages/ViewRequest";
 import Chat from "../pages/dashPages/Chat";
+import UnFriends from "../pages/dashPages/UnFriends";
+import SanckBar from "../pages/dashPages/SanckBar";
 
 export const mainRouter = createBrowserRouter([
   {
@@ -23,9 +24,9 @@ export const mainRouter = createBrowserRouter([
   {
     path: "/",
     element: (
-      <PrivateRoute>
-        <Layout />
-      </PrivateRoute>
+      // <PrivateRoute>
+      <Layout />
+      // </PrivateRoute>
     ),
     children: [
       {
@@ -43,6 +44,10 @@ export const mainRouter = createBrowserRouter([
       {
         path: "/view-request",
         element: <ViewRequest />,
+      },
+      {
+        path: "/snackbar",
+        element: <SanckBar />,
       },
       {
         index: true,

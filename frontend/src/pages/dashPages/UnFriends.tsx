@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
@@ -7,6 +7,7 @@ const CardContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  cursor: pointer;
 `;
 
 const Username = styled.p`
@@ -56,23 +57,13 @@ const generateFriends = (count: number): Friend[] => {
 };
 
 const UnFriends = () => {
-  // You can adjust the number of friends here
   const numberOfFriends = 100;
-  const [friends, setFriends] = useState<Friend[]>(
-    generateFriends(numberOfFriends)
-  );
-
-  const handleAddFriend = (friendUsername: string) => {
-    alert(`${friendUsername} as been Deleted From Your friends List!`);
-  };
+  const [friends] = React.useState<Friend[]>(generateFriends(numberOfFriends));
 
   return (
     <Wrapper>
       {friends.map((friend, index) => (
-        <CardContainer
-          key={index}
-          onClick={() => handleAddFriend(friend.username)}
-        >
+        <CardContainer key={index}>
           <h2>Delete Friend</h2>
           <Username>{friend.username}</Username>
           <Email>{friend.email}</Email>
